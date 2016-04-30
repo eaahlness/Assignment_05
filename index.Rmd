@@ -3,7 +3,8 @@ title: "Assignment 05"
 author: "Solutions"
 output:
   html_document:
-    keep_md: true
+    keep_md: yes
+  pdf_document: default
 ---
 
 ```{r}
@@ -67,9 +68,9 @@ ggplot(pred_mod2, aes(x = logUNsun, y = .fitted)) +
 
 
 
-**E:** Take a look at the plot and at the coefficient for `logUNsun` in `mod1b`. What can you say about the relationship betweeh this covariate and the outcome variable `lnrtrade`?
+**E:** Take a look at the plot and at the coefficient for `logUNsun` in `mod2`. What can you say about the relationship betweeh this covariate and the outcome variable `lnrtrade`?
 
-**F:** Replicate the same plot (`logUNsun` v. fitted values of `mod1b`) but in this case use again `geom_point()` and color the dots differently depending on their values for `avpctBCFEcat3`. Make sure you also plot 3 different lines describing the relationship between `logUNsun` and the predicted values of `lnrtrade` for each group of `avpctBCFEcat3`. What do you see? How would you interpret this new plot?
+**F:** Replicate the same plot (`logUNsun` v. fitted values of `mod2`) but in this case use again `geom_point()` and color the dots differently depending on their values for `avpctBCFEcat3`. Make sure you also plot 3 different lines describing the relationship between `logUNsun` and the predicted values of `lnrtrade` for each group of `avpctBCFEcat3`. What do you see? How would you interpret this new plot?
 
 ```{r}
 ggplot(pred_mod2, aes(x = logUNsun, y = .fitted, fill = avpctBCFEcat3)) + 
@@ -77,7 +78,7 @@ ggplot(pred_mod2, aes(x = logUNsun, y = .fitted, fill = avpctBCFEcat3)) +
   geom_smooth(method = "lm", aes(color = avpctBCFEcat3), lwd = 2, se = FALSE)
 ```
 
-**G:** Run a new model (`mod3`) similar to `mod2` but in this case interact the variables `logUNsun` and `avpctBCFE`.
+**G:** Run a new model (`mod3`) similar to `mod2` but in this case interact the variables `logUNsun` and `avpctBCFEcat3`.
 
 ```{r}
 mod3 <- lm(lnrtrade ~ lnrpciab + avremote + landlocked + island + 
